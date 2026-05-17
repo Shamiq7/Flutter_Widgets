@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/list.dart';
 
-class Widget2 extends StatelessWidget {
+class Widget2 extends StatefulWidget {
+
   const Widget2({super.key});
 
   @override
+  State<Widget2> createState() => _Widget2State();
+}
+
+class _Widget2State extends State<Widget2> {
+     int selectedindex = 0;
+
+
+ void onTapped(int index) {
+    setState(() {
+      selectedindex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+   
     return Scaffold(
       //       body: Center(
       //   child: Text(
@@ -128,7 +144,6 @@ class Widget2 extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Container(
-               
                 width: 390,
 
                 child: GridView.builder(
@@ -151,6 +166,19 @@ class Widget2 extends StatelessWidget {
             ],
           ),
         ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profie'),
+        ],
+        currentIndex: selectedindex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        onTap: onTapped,
       ),
     );
   }

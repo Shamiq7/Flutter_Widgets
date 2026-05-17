@@ -10,7 +10,7 @@ class Testpage extends StatefulWidget {
 }
 
 class _TestpageState extends State<Testpage> {
-  // int selectedIndex = 0;
+  int selectedIndex = 0;
   String? selectedVal;
 
   final _formKey = GlobalKey<FormState>();
@@ -256,18 +256,18 @@ class _TestpageState extends State<Testpage> {
       //
       //
 
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
-      //     BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profie'),
-      //   ],
-      //   currentIndex: selectedIndex,
-      //   selectedItemColor: Colors.green,
-      //   unselectedItemColor: Colors.grey,
-      //   onTap: onTapped,
-      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profie'),
+        ],
+        currentIndex: selectedIndex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        // onTap: onTapped,
+      ),
     );
   }
 }
