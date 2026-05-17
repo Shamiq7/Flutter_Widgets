@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/provider/imagepickerprovider.dart';
 import 'package:flutter_widgets/widget2.dart';
+import 'package:flutter_widgets/widget3.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Widget2());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Widget3());
   }
 }

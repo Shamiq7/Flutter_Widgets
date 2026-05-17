@@ -26,6 +26,14 @@ class Widget2icons {
 
 class widget2img {
   final Image img;
+  final String desc;
 
-  widget2img({required this.img});
+  widget2img({required this.img,required this.desc});
+}
+
+class widget3img {
+  final Image img;
+  
+
+  widget3img({required this.img});
 }

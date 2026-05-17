@@ -143,7 +143,7 @@ class _Widget2State extends State<Widget2> {
                 ),
               ),
               SizedBox(height: 20),
-              Container(
+              SizedBox(
                 width: 390,
 
                 child: GridView.builder(
@@ -171,9 +171,9 @@ class _Widget2State extends State<Widget2> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search',),
           BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profie'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
         currentIndex: selectedindex,
         selectedItemColor: Colors.green,
