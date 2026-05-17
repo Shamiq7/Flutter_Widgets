@@ -156,7 +156,7 @@ class _Widget3State extends State<Widget3> {
                 ],
               ),
               SizedBox(height: 20),
-              Container(
+              SizedBox(
                 width: 390,
 
                 child: GridView.builder(
