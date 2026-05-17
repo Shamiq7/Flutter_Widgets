@@ -14,5 +14,18 @@ class Widget1icons {
   final IconData icon;
   final int count;
 
-  Widget1icons({required this.icon,required this.count});
+  Widget1icons({required this.icon, required this.count});
+}
+
+class Widget2icons {
+  final int num;
+  final String char;
+
+  Widget2icons({required this.char, required this.num});
+}
+
+class widget2img {
+  final Image img;
+
+  widget2img({required this.img});
 }

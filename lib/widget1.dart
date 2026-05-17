@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/subWidgets/list.dart';
+import 'package:flutter_widgets/list.dart';
 
 class Widget1 extends StatelessWidget {
   const Widget1({super.key});
@@ -10,11 +10,11 @@ class Widget1 extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 400,
               child: Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
 
                     child: Image.asset('Photos/pic3.png', fit: BoxFit.cover),
@@ -101,7 +101,7 @@ class Widget1 extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            Container(
+            SizedBox(
               height: 500,
               width: 380,
               child: Text(
