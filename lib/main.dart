@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/provider/imagepickerprovider.dart';
-import 'package:flutter_widgets/widget3.dart';
 import 'package:flutter_widgets/widget4.dart';
 import 'package:provider/provider.dart';
 

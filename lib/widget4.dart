@@ -96,122 +96,135 @@ class _Widget4State extends State<Widget4> {
                 ),
               ),
               SizedBox(height: 30),
-              Container(
+              SizedBox(
                 width: 380,
-                child: Column(
-                  children: [
-                    Row(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: w3below.length,
+                  itemBuilder: (context, index) {
+                    final item = w3below[index];
+                    return Column(
                       children: [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('Photos/pic4.png'),
-                          radius: 25,
-                        ),
-                        SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           children: [
-                            Text('Wanda S', style: TextStyle(fontSize: 20)),
-
-                            Text(
-                              'NYC',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            CircleAvatar(
+                              backgroundImage: item.img.image,
+                              radius: 25,
                             ),
+                            SizedBox(width: 5),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(item.name, style: TextStyle(fontSize: 20)),
+
+                                Text(
+                                  item.city,
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(width: 150),
+                            Text(item.date, style: TextStyle(fontSize: 15)),
+                            SizedBox(width: 7),
+                            Icon(Icons.more_vert, size: 25),
                           ],
                         ),
-                        SizedBox(width: 150),
-                        Text('Apr 24', style: TextStyle(fontSize: 15)),
-                        SizedBox(width: 7),
-                        Icon(Icons.more_vert, size: 25),
-                      ],
-                    ),
-                    Container(
-                      height: 400,
-                      child: ClipRRect(
-                        child: Image.asset(
-                          'Photos/pic3.png',
-                          fit: BoxFit.contain,
+                        SizedBox(height: 10),
+                        SizedBox(
+                          height: 400,
+                          child: SizedBox(
+                            width: 400,
+                            height: 300,
+                            child: Image(
+                              image: item.img2.image,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.favorite, color: Colors.red),
-                        SizedBox(width: 10),
-                        Icon(Icons.message),
-                        SizedBox(width: 10),
-                        Icon(Icons.send),
-                        SizedBox(width: 90),
-                        Icon(Icons.more_horiz),
-                        SizedBox(width: 140),
-                        Icon(Icons.bookmark),
+                        SizedBox(height: 20),
+                        Row(
+                          children: [
+                            Icon(Icons.favorite, color: Colors.red),
+                            SizedBox(width: 10),
+                            Icon(Icons.message),
+                            SizedBox(width: 10),
+                            Icon(Icons.send),
+                            SizedBox(width: 90),
+                            Icon(Icons.more_horiz),
+                            SizedBox(width: 140),
+                            Icon(Icons.bookmark),
+                          ],
+                        ),
+                        SizedBox(height: 30),
                       ],
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
               SizedBox(height: 20),
 
-              Container(
-                width: 380,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('Photos/pic4.png'),
-                          radius: 25,
-                        ),
-                        SizedBox(width: 20),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Wanda S', style: TextStyle(fontSize: 20)),
+              // SizedBox(
+              //   width: 380,
+              //   child: Column(
+              //     children: [
+              //       Row(
+              //         children: [
+              //           CircleAvatar(
+              //             backgroundImage: AssetImage('Photos/pic4.png'),
+              //             radius: 25,
+              //           ),
+              //           SizedBox(width: 20),
+              //           Column(
+              //             crossAxisAlignment: CrossAxisAlignment.start,
+              //             children: [
+              //               Text('Wanda S', style: TextStyle(fontSize: 20)),
 
-                            Text(
-                              'NYC',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(width: 150),
-                        Text('Apr 24', style: TextStyle(fontSize: 15)),
-                        SizedBox(width: 7),
-                        Icon(Icons.more_vert, size: 25),
-                      ],
-                    ),
-                    Container(
-                      height: 400,
-                      child: ClipRRect(
-                        child: Image.asset(
-                          'Photos/pic3.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.favorite, color: Colors.red),
-                        SizedBox(width: 10),
-                        Icon(Icons.message),
-                        SizedBox(width: 10),
-                        Icon(Icons.send),
-                        SizedBox(width: 90),
-                        Icon(Icons.more_horiz),
-                        SizedBox(width: 140),
-                        Icon(Icons.bookmark),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              //               Text(
+              //                 'NYC',
+              //                 style: TextStyle(
+              //                   fontSize: 13,
+              //                   color: Colors.red,
+              //                   fontWeight: FontWeight.bold,
+              //                 ),
+              //               ),
+              //             ],
+              //           ),
+              //           SizedBox(width: 150),
+              //           Text('Apr 24', style: TextStyle(fontSize: 15)),
+              //           SizedBox(width: 7),
+              //           Icon(Icons.more_vert, size: 25),
+              //         ],
+              //       ),
+              //       SizedBox(
+              //         height: 400,
+              //         child: ClipRRect(
+              //           child: Image.asset(
+              //             'Photos/pic3.png',
+              //             fit: BoxFit.contain,
+              //           ),
+              //         ),
+              //       ),
+              //       Row(
+              //         children: [
+              //           Icon(Icons.favorite, color: Colors.red),
+              //           SizedBox(width: 10),
+              //           Icon(Icons.message),
+              //           SizedBox(width: 10),
+              //           Icon(Icons.send),
+              //           SizedBox(width: 90),
+              //           Icon(Icons.more_horiz),
+              //           SizedBox(width: 140),
+              //           Icon(Icons.bookmark),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

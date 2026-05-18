@@ -28,12 +28,21 @@ class widget2img {
   final Image img;
   final String desc;
 
-  widget2img({required this.img,required this.desc});
+  widget2img({required this.img, required this.desc});
 }
 
 class widget3img {
   final Image img;
-  
 
   widget3img({required this.img});
+}
+
+class widget3belowsection {
+  final Image img;
+  final Image img2;
+  final String name;
+  final String city;
+  final String date;
+
+  widget3belowsection({required this.city,required this.date,required this.img,required this.img2,required this.name});
 }

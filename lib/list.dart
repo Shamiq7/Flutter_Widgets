@@ -24,26 +24,63 @@ final List<Widget2icons> W2icons = [
 ];
 
 final List<widget2img> w2img = [
-  widget2img(img: Image.asset('Photos/pic1.png'),desc: 'New'),
-  widget2img(img: Image.asset('Photos/pic2.png'),desc: 'NYC'),
-  widget2img(img: Image.asset('Photos/pic3.png'),desc: 'Brazil'),
-  widget2img(img: Image.asset('Photos/pic4.png'),desc: 'London'),
-   widget2img(img: Image.asset('Photos/pic3.png'),desc: 'Pariz'),
- 
+  widget2img(img: Image.asset('Photos/pic1.png'), desc: 'New'),
+  widget2img(img: Image.asset('Photos/pic2.png'), desc: 'NYC'),
+  widget2img(img: Image.asset('Photos/pic3.png'), desc: 'Brazil'),
+  widget2img(img: Image.asset('Photos/pic4.png'), desc: 'London'),
+  widget2img(img: Image.asset('Photos/pic3.png'), desc: 'Pariz'),
 ];
 final List<widget3img> w3img = [
   widget3img(img: Image.asset('Photos/pic1.png')),
   widget3img(img: Image.asset('Photos/pic2.png')),
   widget3img(img: Image.asset('Photos/pic3.png')),
   widget3img(img: Image.asset('Photos/pic4.png')),
-     widget3img(img: Image.asset('Photos/pic3.png')),
-   widget3img(img: Image.asset('Photos/pic1.png')),
+  widget3img(img: Image.asset('Photos/pic3.png')),
+  widget3img(img: Image.asset('Photos/pic1.png')),
   widget3img(img: Image.asset('Photos/pic2.png')),
   widget3img(img: Image.asset('Photos/pic3.png')),
-   widget3img(img: Image.asset('Photos/pic3.png')),
-   widget3img(img: Image.asset('Photos/pic1.png')),
+  widget3img(img: Image.asset('Photos/pic3.png')),
+  widget3img(img: Image.asset('Photos/pic1.png')),
   widget3img(img: Image.asset('Photos/pic2.png')),
   widget3img(img: Image.asset('Photos/pic3.png')),
   widget3img(img: Image.asset('Photos/pic4.png')),
-   widget3img(img: Image.asset('Photos/pic3.png')),
+  widget3img(img: Image.asset('Photos/pic3.png')),
+];
+
+final List<widget3belowsection> w3below = [
+  widget3belowsection(
+    city: 'NYC',
+    date: 'Apr 24',
+    img: Image.asset('Photos/pic4.png'),
+    img2: Image.asset('Photos/pic1.png'),
+    name: 'Wanda S',
+  ),
+  widget3belowsection(
+    city: 'Sydney',
+    date: 'Jul 14',
+    img: Image.asset('Photos/pic5.png'),
+    img2: Image.asset('Photos/pic2.png'),
+    name: 'Jason S',
+  ),
+  widget3belowsection(
+    city: 'Delhi',
+    date: 'Apr 24',
+    img: Image.asset('Photos/pic4.png'),
+    img2: Image.asset('Photos/pic3.png'),
+    name: 'Elisa Dell',
+  ),
+  widget3belowsection(
+    city: 'DC',
+    date: 'Apr 24',
+    img: Image.asset('Photos/pic5.png'),
+    img2: Image.asset('Photos/pic7.png'),
+    name: 'Hamond Y',
+  ),
+  widget3belowsection(
+    city: 'Edinburgh',
+    date: 'Apr 24',
+    img: Image.asset('Photos/pic4.png'),
+    img2: Image.asset('Photos/pic1.png'),
+    name: 'Lida o',
+  ),
 ];
