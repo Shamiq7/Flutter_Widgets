@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widgets/provider/imagepickerprovider.dart';
 import 'package:flutter_widgets/widget4.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => ImagePickerProvider())],
