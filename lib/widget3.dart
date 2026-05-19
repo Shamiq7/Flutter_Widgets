@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/Loginpg1.dart';
 import 'package:flutter_widgets/list.dart';
 
 class Widget3 extends StatefulWidget {
@@ -22,7 +23,15 @@ class _Widget3State extends State<Widget3> {
     return Scaffold(
       appBar: AppBar(
         title: Text('wanda.s', style: TextStyle(fontWeight: FontWeight.w500)),
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Loginpg1()),
+            );
+          },
+          icon: Icon(Icons.arrow_back_ios_new),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
