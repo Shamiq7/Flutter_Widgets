@@ -16,6 +16,7 @@ class _DatabaseuiState extends State<Databaseui> {
   TextEditingController controller3 = TextEditingController();
   TextEditingController controller4 = TextEditingController();
   TextEditingController controller5 = TextEditingController();
+  TextEditingController controller6 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,64 +38,11 @@ class _DatabaseuiState extends State<Databaseui> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(height: 20),
                   Container(
                     width: 350,
                     child: TextField(
                       controller: controller1,
-                      decoration: InputDecoration(
-                        hintText: 'Write Collection name',
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 1.5),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 1.5),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    width: 350,
-                    child: TextField(
-                      controller: controller2,
-                      decoration: InputDecoration(
-                        hintText: 'Write Document Name',
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 1.5),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 1.5),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    width: 350,
-                    child: TextField(
-                      controller: controller3,
-                      decoration: InputDecoration(
-                        hintText: 'Write animal name',
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 1.5),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(width: 1.5),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    width: 350,
-                    child: TextField(
-                      controller: controller4,
                       decoration: InputDecoration(
                         hintText: 'Write animal type',
                         focusedBorder: OutlineInputBorder(
@@ -112,7 +60,25 @@ class _DatabaseuiState extends State<Databaseui> {
                   Container(
                     width: 350,
                     child: TextField(
-                      controller: controller5,
+                      controller: controller2,
+                      decoration: InputDecoration(
+                        hintText: 'Write animal name',
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 1.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 1.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    width: 350,
+                    child: TextField(
+                      controller: controller3,
                       decoration: InputDecoration(
                         hintText: 'Write  animal age',
                         focusedBorder: OutlineInputBorder(
@@ -127,37 +93,88 @@ class _DatabaseuiState extends State<Databaseui> {
                     ),
                   ),
                   SizedBox(height: 20),
+                  Container(
+                    width: 350,
+                    child: TextField(
+                      controller: controller4,
+                      decoration: InputDecoration(
+                        hintText: 'Write field to update',
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 1.5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(width: 1.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Container(
+                  //   width: 350,
+                  //   child: TextField(
+                  //     controller: controller5,
+                  //     decoration: InputDecoration(
+                  //       hintText: 'Write updated value',
+                  //       focusedBorder: OutlineInputBorder(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //         borderSide: BorderSide(width: 1.5),
+                  //       ),
+                  //       enabledBorder: OutlineInputBorder(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //         borderSide: BorderSide(width: 1.5),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 20),
+                  // Container(
+                  //   width: 350,
+                  //   child: TextField(
+                  //     controller: controller6,
+                  //     decoration: InputDecoration(
+                  //       hintText: 'Write field to Delete',
+                  //       focusedBorder: OutlineInputBorder(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //         borderSide: BorderSide(width: 1.5),
+                  //       ),
+                  //       enabledBorder: OutlineInputBorder(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //         borderSide: BorderSide(width: 1.5),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      final collectName = controller1.text.toString();
-                      final docName = controller2.text.toString();
-                      final name = controller3.text.toString();
-                      final animal = controller4.text.toString();
-                      final age = controller5.text.toString();
-                      create(
-                        collectName,
-                        docName,
-                        name,
-                        animal,
-                        int.parse(age),
-                      );
+                      final animal = controller1.text.toString();
+                      final type = controller2.text.toString();
+                      final age = controller3.text.toString();
+                      if (age != null) {
+                        create(animal, type, int.parse(age));
+                      }
                     },
                     child: Text('Create'),
                   ),
                   SizedBox(height: 5),
-                  ElevatedButton(
-                    onPressed: () {
-                      update('pets', 'tome', 'age', 00);
-                    },
-                    child: Text('Update'),
-                  ),
-                  SizedBox(height: 5),
-                  ElevatedButton(
-                    onPressed: () {
-                      delete('pets', 'kitty');
-                    },
-                    child: Text('Delete'),
-                  ),
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     final valToUpdate = controller4.text.toString();
+                  //     final newValue = controller5.text.toString();
+                  //     update('pets', 'dogesh', valToUpdate, newValue);
+                  //   },
+                  //   child: Text('Update'),
+                  // ),
+                  // SizedBox(height: 5),
+                  // ElevatedButton(
+                  //   onPressed: () {
+                  //     final deleteVal = controller6.text.toString();
+                  //     delete('pets', deleteVal);
+                  //   },
+                  //   child: Text('Delete'),
+                  // ),
                   SizedBox(height: 5),
                   ElevatedButton(
                     onPressed: () {
