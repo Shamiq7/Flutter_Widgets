@@ -41,6 +41,7 @@ dependencies:
   geolocator: ^14.0.2
   fluttertoast: 
   firebase_auth:
+  cloud_firestore: ^5.6.12
 
 dev_dependencies:
   flutter_test:

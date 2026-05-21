@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/functions/authfunctions.dart';
-import 'package:flutter_widgets/widget3.dart';
 
 class Loginpg1 extends StatefulWidget {
   const Loginpg1({super.key});
@@ -15,10 +14,15 @@ class _Loginpg1State extends State<Loginpg1> {
   String mail = '';
   String password = '';
   String userName = '';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Loginn Pg'), centerTitle: true),
+      appBar: AppBar(
+        title: Text('Loginn Pg'),
+     
+        centerTitle: true,
+      ),
       body: Form(
         key: _formkey,
         child: SafeArea(
@@ -27,7 +31,7 @@ class _Loginpg1State extends State<Loginpg1> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
-                child: Container(
+                child: SizedBox(
                   width: 300,
                   child: Column(
                     children: [
@@ -120,7 +124,7 @@ class _Loginpg1State extends State<Loginpg1> {
               ),
 
               SizedBox(height: 20),
-              Container(
+              SizedBox(
                 width: 350,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
