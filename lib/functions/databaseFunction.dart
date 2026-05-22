@@ -9,6 +9,7 @@ create(String name, animal, int age) async {
   print('//////////Database updated///////////////');
 }
 
+
 // why we use field and  var newfield as the value we want to update can be any value and of different datatype thhat is why we use var
 update(String collecName, doc, field, var newField) async {
   await FirebaseFirestore.instance.collection(collecName).doc(doc).update({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/Loginpg1.dart';
-import 'package:flutter_widgets/list.dart';
+import 'package:flutter_widgets/modals/list.dart';
 
 class Widget3 extends StatefulWidget {
   const Widget3({super.key});

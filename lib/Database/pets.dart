@@ -70,7 +70,7 @@ Future<void> _myDoilogue(BuildContext context, String docId) async {
         title: Text('Update Age'),
         content: TextField(
           controller: updateController,
-          decoration: InputDecoration(hintText: 'Enter NEw age'),
+          decoration: InputDecoration(hintText: 'Enter new age'),
         ),
         actions: [
           TextButton(

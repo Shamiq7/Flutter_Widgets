@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/list.dart';
+import 'package:flutter_widgets/modals/list.dart';
 
 class DismissibleWidget extends StatefulWidget {
   const DismissibleWidget({super.key});

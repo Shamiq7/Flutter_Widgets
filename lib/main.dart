@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/Loginpg1.dart';
-import 'package:flutter_widgets/databaseUI.dart';
+import 'package:flutter_widgets/Database/databaseUI.dart';
+import 'package:flutter_widgets/Noteappmainscreen.dart';
 import 'package:flutter_widgets/provider/imagepickerprovider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,17 +27,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, Snapshot) {
-          if (Snapshot.hasData) {
-            return Databaseui();
-          } else {
-           return Loginpg1();
-          }
-          
-        },
-      ),
+      home: Noteappmainscreen(),
+      // home: StreamBuilder(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, Snapshot) {
+      //     if (Snapshot.hasData) {
+      //       return Databaseui();
+      //     } else {
+      //      return Loginpg1();
+      //     }
+
+      //   },
+      // ),
     );
     // return MaterialApp(debugShowCheckedModeBanner: false, home: Loginpg1());
   }

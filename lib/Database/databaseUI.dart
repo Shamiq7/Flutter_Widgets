@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/functions/databaseFunction.dart';
-import 'package:flutter_widgets/pages/pets.dart';
+import 'package:flutter_widgets/Database/pets.dart';
 
 class Databaseui extends StatefulWidget {
   const Databaseui({super.key});
@@ -39,7 +39,7 @@ class _DatabaseuiState extends State<Databaseui> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: 20),
-                  Container(
+                  SizedBox(
                     width: 350,
                     child: TextField(
                       controller: controller1,
@@ -57,7 +57,7 @@ class _DatabaseuiState extends State<Databaseui> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Container(
+                  SizedBox(
                     width: 350,
                     child: TextField(
                       controller: controller2,
@@ -75,7 +75,7 @@ class _DatabaseuiState extends State<Databaseui> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Container(
+                  SizedBox(
                     width: 350,
                     child: TextField(
                       controller: controller3,
@@ -93,7 +93,7 @@ class _DatabaseuiState extends State<Databaseui> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Container(
+                  SizedBox(
                     width: 350,
                     child: TextField(
                       controller: controller4,
@@ -152,10 +152,8 @@ class _DatabaseuiState extends State<Databaseui> {
                       final animal = controller1.text.toString();
                       final type = controller2.text.toString();
                       final age = controller3.text.toString();
-                      if (age != null) {
-                        create(animal, type, int.parse(age));
-                      }
-                    },
+                      create(animal, type, int.parse(age));
+                                        },
                     child: Text('Create'),
                   ),
                   SizedBox(height: 5),
