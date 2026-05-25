@@ -1,7 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/Loginpg1.dart';
-import 'package:flutter_widgets/Database/databaseUI.dart';
 import 'package:flutter_widgets/Noteappmainscreen.dart';
 import 'package:flutter_widgets/provider/imagepickerprovider.dart';
 import 'package:provider/provider.dart';

@@ -14,47 +14,50 @@ class _PetsState extends State<Pets> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Retrieve data pets'), centerTitle: true),
-      body: Container(
-        margin: EdgeInsets.all(20),
-        child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('pets').snapshots(),
-          builder: (context, petsSnapshot) {
-            if (petsSnapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            } else {
-              final petDocs = petsSnapshot.data!.docs;
-              return Card(
-                child: ListView.builder(
-                  itemCount: petDocs.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 20,
-                      child: ListTile(
-                        leading: IconButton(
-                          onPressed: () {
-                            delete('pets', petDocs[index].id);
-                          },
-                          icon: Icon(Icons.delete),
-                        ),
-                        title: Text(petDocs[index]['name']),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(20),
+          child: StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance.collection('pets').snapshots(),
+            builder: (context, petsSnapshot) {
+              if (petsSnapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                final petDocs = petsSnapshot.data!.docs;
+                return Card(
+                  child: ListView.builder(
+                    itemCount: petDocs.length,
+                    itemBuilder: (context, index) {
+                      // final item = petDocs[index];
+                      return Card(
+                        elevation: 20,
+                        child: ListTile(
+                          leading: IconButton(
+                            onPressed: () {
+                              delete('pets', petDocs[index].id);
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
+                          title: Text(petDocs[index]['name']),
 
-                        subtitle: Text(
-                          "${petDocs[index]['Animal']} - age (${petDocs[index]['age']})",
+                          subtitle: Text(
+                            "${petDocs[index]['Animal']} - age (${petDocs[index]['age']})",
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {
+                              _myDoilogue(context, petDocs[index].id);
+                              // update('pets', petDocs[index].id, 'age', 10);
+                            },
+                            icon: Icon(Icons.next_plan),
+                          ),
                         ),
-                        trailing: IconButton(
-                          onPressed: () {
-                            _myDoilogue(context, petDocs[index].id);
-                            // update('pets', petDocs[index].id, 'age', 10);
-                          },
-                          icon: Icon(Icons.next_plan),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              );
-            }
-          },
+                      );
+                    },
+                  ),
+                );
+              }
+            },
+          ),
         ),
       ),
     );

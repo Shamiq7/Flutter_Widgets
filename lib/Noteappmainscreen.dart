@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/functions/databaseFunction.dart';
+import 'package:flutter_widgets/notesAppretrieve.dart';
 
 class Noteappmainscreen extends StatefulWidget {
   const Noteappmainscreen({super.key});
@@ -16,10 +19,6 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
           Container(
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 6, 102, 92),
-              // borderRadius: BorderRadius.only(
-              //   bottomLeft: Radius.elliptical(20, 20),
-              //   bottomRight: Radius.elliptical(20, 20),
-              // ),
             ),
             height: 400,
             width: double.infinity,
@@ -59,7 +58,7 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Container(
+                SizedBox(
                   width: 370,
                   child: TextField(
                     decoration: InputDecoration(
@@ -125,18 +124,10 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 15),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Text('View Notes'),
-                          ),
-                        ),
                       ],
                     ),
                     SizedBox(width: 15),
-                    Container(
+                    SizedBox(
                       height: 140,
                       width: 140,
 
@@ -168,56 +159,139 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
             ),
           ),
           SizedBox(height: 20),
-          Column(
-            children: [
-              Container(
-                width: 350,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Create', style: TextStyle(color: Colors.white)),
-                  style: TextButton.styleFrom(backgroundColor: Colors.teal),
-                ),
-              ),
-              SizedBox(height: 20),
-              Container(
-                width: 350,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Retrieve Notes',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
-                ),
-              ),
-              SizedBox(height: 50),
-              Container(
-                height: 255,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 6, 102, 92),
-                  // borderRadius: BorderRadius.only(
-                  //   topLeft: Radius.elliptical(20, 20),
-                  //   topRight: Radius.elliptical(20, 20),
-                  // ),
-                ),
-                child: Center(
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Every Note Counts',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+          SizedBox(
+            width: 350,
+            child: ElevatedButton(
+              onPressed: () {
+                _Mydialogue(context);
+              },
+              style: TextButton.styleFrom(backgroundColor: Colors.teal),
+              child: Text('Create', style: TextStyle(color: Colors.white)),
+            ),
+          ),
+          SizedBox(height: 20),
+          Expanded(
+            // child: ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => Notesappretrieve(),
+            //       ),
+            //     );
+            //   },
+            //   style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+            //   child: Text(
+            //     'Retrieve Notes',
+            //     style: TextStyle(color: Colors.white),
+            //   ),
+            // ),
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('notes')
+                  .snapshots(),
+              builder: (context, SnapshotID) {
+                if (SnapshotID.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else {
+                  final item = SnapshotID.data!.docs;
+                  return Card(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+
+                      itemCount: item.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          elevation: 10,
+                          child: ListTile(
+                            leading: IconButton(
+                              onPressed: () {
+                                _myDialogue1(context, item[index].id);
+                              },
+                              icon: Icon(Icons.edit),
+                            ),
+                            title: Text(item[index]['Note Content']),
+                            trailing: TextButton(
+                              onPressed: () {
+                                delete1('notes', item[index].id);
+                              },
+                              child: Icon(Icons.delete),
+                            ),
+                          ),
+                        );
+                      },
                     ),
-                  ),
-                ),
-              ),
-            ],
+                  );
+                }
+              },
+            ),
           ),
         ],
       ),
     );
   }
+}
+
+Future<void> _Mydialogue(BuildContext context) {
+  TextEditingController addController = TextEditingController();
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Add Note'),
+        content: TextField(
+          controller: addController,
+          decoration: InputDecoration(hintText: 'Add Your Note'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // final note = addController;
+              create1(addController.text);
+              print(addController.text);
+              Navigator.pop(context);
+            },
+            child: Text('Add'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> _myDialogue1(BuildContext context, String docID) async {
+  TextEditingController updateController = TextEditingController();
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Update Note'),
+        content: TextField(
+          controller: updateController,
+          decoration: InputDecoration(hintText: 'Update Your Note'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              update1('notes', docID, 'Note Content', updateController.text);
+            },
+            child: Text('Update'),
+          ),
+        ],
+      );
+    },
+  );
 }

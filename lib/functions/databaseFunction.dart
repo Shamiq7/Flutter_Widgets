@@ -9,7 +9,6 @@ create(String name, animal, int age) async {
   print('//////////Database updated///////////////');
 }
 
-
 // why we use field and  var newfield as the value we want to update can be any value and of different datatype thhat is why we use var
 update(String collecName, doc, field, var newField) async {
   await FirebaseFirestore.instance.collection(collecName).doc(doc).update({
@@ -19,6 +18,23 @@ update(String collecName, doc, field, var newField) async {
 
 delete(String collectName, doc) async {
   await FirebaseFirestore.instance.collection(collectName).doc(doc).delete();
+}
+
+create1(String noteName) async {
+  await FirebaseFirestore.instance.collection('notes').add({
+    'Note Content': noteName,
+  });
+  print('///////////////database added////////////////');
+}
+
+delete1(String collectName, doc) async {
+  await FirebaseFirestore.instance.collection(collectName).doc(doc).delete();
+}
+
+update1(String collecname, doc, field, var newField) async {
+  await FirebaseFirestore.instance.collection(collecname).doc(doc).update({
+    field : newField,
+  });
 }
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
