@@ -167,7 +167,7 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
             width: 350,
             child: ElevatedButton(
               onPressed: () {
-                _Mydialogue(context);
+                _addNote(context);
               },
               style: TextButton.styleFrom(backgroundColor: Colors.teal),
               child: Text('Create', style: TextStyle(color: Colors.white)),
@@ -213,7 +213,7 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
                         child: ListTile(
                           leading: IconButton(
                             onPressed: () {
-                              _myDialogue1(
+                              _updateNote(
                                 context,
                                 // item[index].id,
                                 // item[index]['Note Content'],
@@ -228,7 +228,7 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
                           trailing: TextButton(
                             onPressed: () {
                               // delete1('notes', item[index].id);
-                              delete1('notes', filterNotes[index].id);
+                              _deleteNote(context, item[index].id);
                             },
                             child: Icon(Icons.delete),
                           ),
@@ -246,7 +246,7 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
   }
 }
 
-Future<void> _Mydialogue(BuildContext context) {
+Future<void> _addNote(BuildContext context) {
   TextEditingController addController = TextEditingController();
   return showDialog(
     context: context,
@@ -279,7 +279,7 @@ Future<void> _Mydialogue(BuildContext context) {
   );
 }
 
-Future<void> _myDialogue1(
+Future<void> _updateNote(
   BuildContext context,
   String docID,
   String oldtext,
@@ -307,6 +307,33 @@ Future<void> _myDialogue1(
               update1('notes', docID, 'Note Content', updateController.text);
             },
             child: Text('Update'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> _deleteNote(BuildContext context, String Id) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Are You Sure You Want To Delete the note?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              delete1('notes', Id);
+              ;
+            },
+            child: Text('Delete'),
           ),
         ],
       );
