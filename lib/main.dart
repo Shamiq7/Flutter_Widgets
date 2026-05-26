@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/Noteappmainscreen.dart';
+import 'package:flutter_widgets/notesAppusingDB/Noteappmainscreen.dart';
 import 'package:flutter_widgets/provider/imagepickerprovider.dart';
+import 'package:flutter_widgets/wallpaperApp.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Noteappmainscreen(),
+      home: Wallpaperapp(),
       // home: StreamBuilder(
       //   stream: FirebaseAuth.instance.authStateChanges(),
       //   builder: (context, Snapshot) {
