@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widgets/functions/databaseFunction.dart';
-import 'package:flutter_widgets/notesAppretrieve.dart';
 
 class Noteappmainscreen extends StatefulWidget {
   const Noteappmainscreen({super.key});
@@ -11,6 +10,8 @@ class Noteappmainscreen extends StatefulWidget {
 }
 
 class _NoteappmainscreenState extends State<Noteappmainscreen> {
+  TextEditingController searchController = TextEditingController();
+  String searchText = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,14 +62,17 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
                 SizedBox(
                   width: 370,
                   child: TextField(
+                    controller: searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        searchText = value.toLowerCase();
+                      });
+                    },
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
                       prefixIcon: Icon(Icons.search, color: Colors.teal),
-                      label: Text(
-                        'Serch Your Note',
-                        style: TextStyle(color: Colors.black),
-                      ),
+                      hintText: 'Search Your Note',
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                         borderSide: BorderSide(width: 1.5),
@@ -195,32 +199,42 @@ class _NoteappmainscreenState extends State<Noteappmainscreen> {
                   return CircularProgressIndicator();
                 } else {
                   final item = SnapshotID.data!.docs;
-                  return Card(
-                    child: ListView.builder(
-                      shrinkWrap: true,
-
-                      itemCount: item.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          elevation: 10,
-                          child: ListTile(
-                            leading: IconButton(
-                              onPressed: () {
-                                _myDialogue1(context, item[index].id);
-                              },
-                              icon: Icon(Icons.edit),
-                            ),
-                            title: Text(item[index]['Note Content']),
-                            trailing: TextButton(
-                              onPressed: () {
-                                delete1('notes', item[index].id);
-                              },
-                              child: Icon(Icons.delete),
-                            ),
+                  final filterNotes = item.where((doc) {
+                    final note = doc['Note Content'].toString().toLowerCase();
+                    return note.contains(searchText);
+                  }).toList();
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: filterNotes.length,
+                    // itemCount: item.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 10,
+                        child: ListTile(
+                          leading: IconButton(
+                            onPressed: () {
+                              _myDialogue1(
+                                context,
+                                // item[index].id,
+                                // item[index]['Note Content'],
+                                filterNotes[index].id,
+                                filterNotes[index]['Note Content'],
+                              );
+                            },
+                            icon: Icon(Icons.edit),
                           ),
-                        );
-                      },
-                    ),
+                          // title: Text(item[index]['Note Content']),
+                          title: Text(filterNotes[index]['Note Content']),
+                          trailing: TextButton(
+                            onPressed: () {
+                              // delete1('notes', item[index].id);
+                              delete1('notes', filterNotes[index].id);
+                            },
+                            child: Icon(Icons.delete),
+                          ),
+                        ),
+                      );
+                    },
                   );
                 }
               },
@@ -265,8 +279,12 @@ Future<void> _Mydialogue(BuildContext context) {
   );
 }
 
-Future<void> _myDialogue1(BuildContext context, String docID) async {
-  TextEditingController updateController = TextEditingController();
+Future<void> _myDialogue1(
+  BuildContext context,
+  String docID,
+  String oldtext,
+) async {
+  TextEditingController updateController = TextEditingController(text: oldtext);
   return showDialog(
     context: context,
     builder: (context) {
@@ -274,7 +292,7 @@ Future<void> _myDialogue1(BuildContext context, String docID) async {
         title: Text('Update Note'),
         content: TextField(
           controller: updateController,
-          decoration: InputDecoration(hintText: 'Update Your Note'),
+          decoration: InputDecoration(),
         ),
         actions: [
           TextButton(
