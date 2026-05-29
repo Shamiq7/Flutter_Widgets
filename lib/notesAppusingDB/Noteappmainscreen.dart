@@ -331,7 +331,6 @@ Future<void> _deleteNote(BuildContext context, String Id) {
             onPressed: () {
               Navigator.pop(context);
               delete1('notes', Id);
-              ;
             },
             child: Text('Delete'),
           ),

@@ -11,6 +11,8 @@ class Setwallpaper extends StatefulWidget {
 }
 
 class _SetwallpaperState extends State<Setwallpaper> {
+ 
+ 
   Future<void> setWallpaper() async {
     int location = WallpaperManagerFlutter.bothScreens
     ;

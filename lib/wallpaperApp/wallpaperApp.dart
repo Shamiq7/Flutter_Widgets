@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/setwallpaper.dart';
+import 'package:flutter_widgets/wallpaperApp/setwallpaper.dart';
 import 'package:http/http.dart' as hppt;
 
 class Wallpaperapp extends StatefulWidget {
@@ -36,6 +36,7 @@ class _WallpaperappState extends State<Wallpaperapp> {
         });
   }
 
+  @override
   void initState() {
     super.initState();
     fetchAPI();
@@ -46,7 +47,7 @@ class _WallpaperappState extends State<Wallpaperapp> {
       pg = pg + 1;
     });
     String url =
-        'https://api.pexels.com/v1/curated?per_page=80&page =' + pg.toString();
+        'https://api.pexels.com/v1/curated?per_page=80&page =$pg';
 
     await hppt
         .get(
